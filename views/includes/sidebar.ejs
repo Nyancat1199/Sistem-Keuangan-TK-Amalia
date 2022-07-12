@@ -1,0 +1,134 @@
+<header class="header-mobile d-block d-lg-none">
+  <div class="header-mobile__bar">
+    <div class="container-fluid">
+      <div class="header-mobile-inner">
+        <!-- <a class="logo" href="index.html">
+          <img src="images/icon/logo.png" alt="CoolAdmin" />
+        </a> -->
+        <h2>TK AMALIA</h2>
+        <button class="hamburger hamburger--slider" type="button">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar-mobile">
+    <div class="container-fluid">
+      <ul class="navbar-mobile__list list-unstyled">
+        <li>
+          <a href="#"> <i class="fas fa-tachometer-alt"></i>Dasboard</a>
+        </li>
+        <% if(user.role === '1') { %>
+        <li class="has-sub">
+          <a class="js-arrow" href="#">
+            <i class="fas fa-trophy"></i>Data
+            <span class="arrow">
+              <i class="fas fa-angle-down"></i>
+            </span>
+          </a>
+          <ul class="list-unstyled navbar__sub-list js-sub-list">
+            <li>
+              <a href="#"> <i class="fas fa-table"></i>User</a>
+            </li>
+            <li>
+              <a href="#"> <i class="fas fa-table"></i>Murid</a>
+            </li>
+            <li>
+              <a href="/data-guru"> <i class="fas fa-table"></i>Guru</a>
+            </li>
+          </ul>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<aside class="menu-sidebar d-none d-lg-block">
+  <div class="logo">
+    <!-- <a href="#">
+      <img src="images/icon/logo.png" alt="Cool Admin" />
+    </a> -->
+    <h2>TK AMALIA</h2>
+  </div>
+  <div class="menu-sidebar__content js-scrollbar1">
+    <nav class="navbar-sidebar2">
+      <ul class="list-unstyled navbar__list">
+        <li>
+          <a href="/admin"> <i class="fas fa-tachometer-alt"></i>Dasboard</a>
+        </li>
+        <% if(user.role === '1') { %>
+        <li class="has-sub">
+          <a class="js-arrow" href="#">
+            <i class="fas fa-database"></i>Data
+            <span class="arrow">
+              <i class="fas fa-angle-down"></i>
+            </span>
+          </a>
+          <ul class="list-unstyled navbar__sub-list js-sub-list">
+            <li>
+              <a href="/admin/users"> <i class="fas fa-table"></i>User</a>
+            </li>
+            <li>
+              <a href="/admin/murid"> <i class="fas fa-table"></i>Murid</a>
+            </li>
+            <li>
+              <a href="/admin/guru"> <i class="fas fa-table"></i>Guru</a>
+            </li>
+          </ul>
+        </li>
+        <% } %>
+        <li class="has-sub">
+          <a class="js-arrow" href="#">
+            <i class="fas fa-sign-in-alt"></i>Pemasukan
+            <span class="arrow">
+              <i class="fas fa-angle-down"></i>
+            </span>
+          </a>
+          <ul class="list-unstyled navbar__sub-list js-sub-list">
+            <li>
+              <a href="/admin/pemasukan">
+                <i class="fas fa-table"></i>Daftar Pemasukan</a
+              >
+            </li>
+            <li>
+              <a href="/admin/input-pemasukan">
+                <i class="fas fa-table"></i>Input Pemasukan</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="has-sub">
+          <a class="js-arrow" href="#">
+            <i class="fas fa-sign-out-alt"></i>Pengeluaran
+            <span class="arrow">
+              <i class="fas fa-angle-down"></i>
+            </span>
+          </a>
+          <ul class="list-unstyled navbar__sub-list js-sub-list">
+            <li>
+              <a href="/admin/pengeluaran">
+                <i class="fas fa-table"></i>Daftar Pengeluaran</a
+              >
+            </li>
+            <li>
+              <a href="/admin/detail-pengeluaran">
+                <i class="fas fa-table"></i>Input Pengeluaran</a
+              >
+            </li>
+          </ul>
+        </li>
+        <% if(user.role === '2') { %>
+        <li>
+          <a href="/admin/laporan">
+            <i class="fas fa-tachometer-alt"></i>Laporan</a
+          >
+        </li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+</aside>
+<!-- END MENU SIDEBAR-->

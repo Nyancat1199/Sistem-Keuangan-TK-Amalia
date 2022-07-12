@@ -1,0 +1,84 @@
+<%- include('./includes/header.ejs') %>
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <%- include('./includes/sidebar.ejs')%>
+        <div class="page-container">
+            <%- include('./includes/header-dekstop.ejs')%>
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="overview-wrap">
+                                    <h2 class="title-1">Laporan</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-md-12 d-flex justify-content-end">
+                                <div class="form-group ml-3">
+                                    <select name="bulan" id="selectBulan" class="form-control">
+                                    <option value="" selected disabled >Pilih Bulan</option>
+                                    <option value="1">Januari</option>
+                                    <option value="2">Februari</option>
+                                    <option value="3">Maret</option>
+                                    <option value="4">April</option>
+                                    <option value="5">Mei</option>
+                                    <option value="6">Juni</option>
+                                    <option value="7">Juli</option>
+                                    <option value="8">Agustus</option>
+                                    <option value="9">September</option>
+                                    <option value="10">Oktober</option>
+                                    <option value="11">November</option>  
+                                    <option value="12">Desember</option>  
+                                    </select>
+                                </div>
+                                <div class="form-group ml-3">
+                                    <select name="tahun" id="selectTahun" class="form-control">
+                                    <option value="" selected disabled>Pilih Tahun</option>
+                                    </select>
+                                </div>
+                                <div class="form-group ml-3">
+                                    <a class="btn btn-info" id="btnPreview" type="button" style="color: white;">Preview</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-t-7">
+                            <div class="col-lg-12">
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>tanggal</th>
+                                                <th>Keterangan</th>
+                                                <th>Pemasukan</th>
+                                                <th>Pengeluaran</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tableBody">
+                                            <tr>
+                                                <td colspan="5" style="text-align: center;">Tidak Ada Data</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="/js/data-laporan.js"></script>
+    <%- include('./includes/footer.ejs') %>

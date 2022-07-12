@@ -1,0 +1,147 @@
+<%- include('./includes/header.ejs') %>
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <%- include('./includes/sidebar.ejs')%>
+        <div class="page-container">
+            <%- include('./includes/header-dekstop.ejs')%>
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="overview-wrap">
+                                    <h2 class="title-1">Data Users</h2>
+                                    <button class="au-btn au-btn-icon au-btn--blue" type="button" data-toggle="modal" data-target="#modalTambahGuru">
+                                        <i class="zmdi zmdi-plus"></i>Tambah</button>
+                                </div>
+                            </div>
+                        </div>
+                        <% if(message) { %>
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <div class="overview-wrap">
+                                    <div class="alert alert-success col-md-12" role="alert">
+                                        <%= message %>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                        <div class="row m-t-20">
+                            <div class="col-lg-12">
+                                <div class="table-responsive table--no-card m-b-40">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Email</th>
+                                                <th>Role</th>
+                                                <th class="text-center">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for (let user of userData) { %>
+                                            <tr>
+                                                <td class="pt-3"><%= number++ %></td>
+                                                <td class="pt-3"><%= user.email %></td>
+                                                <% if(user.role === '1') { %>
+                                                    <td class="pt-3">Admin</td>
+                                                <% }else{ %>
+                                                    <td class="pt-3">Kepala Sekolah</td>
+                                                <% } %>
+                                                <td class="d-flex flex-row justify-content-center">
+                                                    <!-- <form action="/users?userId=true" method="GET">
+                                                        <button type="submit" class="btn btn-success mr-2 btn-detailUser">Detail</button>
+                                                    </form> -->
+                                                    <button type="button" onclick="getDataById('<%= user.email %>', '<%= user.role %>')" class="btn btn-success btn-detailUser mr-2" data-toggle="modal" data-target="#modalDetailUser">Detail</button>
+                                                    <form action="/admin/users/<%= user._id %>" method="POST">
+                                                        <button type="submit" class="btn btn-danger">Hapus</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="modal fade bd-example-modal-lg" id="modalTambahGuru" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Tambah User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form action="/admin/users" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group input-create-user">
+                            <label for="exampleFormControlInput1">Email</label>
+                            <input type="email" class="form-control" name="email" id="email">
+                        </div>
+                        <div class="form-group input-create-user">
+                            <label for="exampleFormControlInput1">Passowrd</label>
+                            <input type="password" class="form-control" name="password" id="password">
+                        </div>
+                        <div class="form-group input-create-user">
+                            <label for="exampleFormControlSelect1">Role</label>
+                            <select class="form-control" name="role" id="role">
+                                <option value="" disabled selected>-- Pilih Role --</option>
+                              <option value="1">Admin</option>
+                              <option value="2">Kepala Sekolah</option>
+                            </select>
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="btn-createUser" class="btn btn-primary" style="cursor: not-allowed;" disabled>Buat Akun</button>
+                        <button type="button" class="btn btn-secondary btn-closeUser" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+                </div>
+              </div>
+          </div>
+          <div class="modal fade bd-example-modal-lg" id="modalDetailUser" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Detail Userr</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Email</label>
+                            <input type="email" class="form-control" id="email-detail" name="email-detail">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Role</label>
+                            <input type="text" class="form-control" id="role-detail" name="role-detail">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+              </div>
+          </div>
+    </div>
+    <script src="/js/users.js"></script>
+    <%- include('./includes/footer.ejs') %>

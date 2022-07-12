@@ -1,0 +1,11 @@
+Pemasukan:
+Uang Pangkal Penerimaan
+Spp Bulanan
+Dana Bos Pemerintah
+Tabungan Anak-Anak
+Dana Kegiatan
+
+Pengeluaran:
+Gaji Guru
+Keperluan Sekolah
+

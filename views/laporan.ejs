@@ -1,0 +1,84 @@
+<%- include('./includes/header.ejs') %>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      table {
+        width: 100%;
+        margin: auto;
+      }
+      .table {
+        margin: auto;
+        width: 80%;
+      }
+      header {
+        width: 80%;
+        margin: auto;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      header p {
+        margin: 0;
+        font-weight: bold;
+      }
+      .action{
+        width: 80%;
+        margin: 30px auto 30px auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p class="title-company">TK AMALIA</p>
+      <p class="title">Laporan Pemasukan dan Pengeluaran TK Amalia</p>
+      <p class="period">Periode</p>
+    </header>
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Tanggal</th>
+            <th scope="col">Keterangan</th>
+            <th scope="col">Pemasukan</th>
+            <th scope="col">Pengeluaran</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% dataLaporan.forEach((laporan, index) => { %>
+          <tr>
+            <td align="center"><%= index + 1 %></td>
+            <td align="center"><%= laporan.tanggal.toLocaleDateString() %></td>
+            <td>
+              <%= laporan.pemasukanId ? laporan.pemasukanId.namaPemasukan :
+              laporan.pengeluaran.namaPengeluaran%>
+            </td>
+            <td align="center" class="currency">
+              <%= laporan.pemasukanId ? laporan.totalBiaya : null %>
+            </td>
+            <td align="center" class="currency">
+              <%= laporan.pengeluaran ? laporan.totalPengeluaran : null %>
+            </td>
+          </tr>
+          <% }) %>
+          <tr>
+            <td colspan="3" align="center"><strong>Total</strong></td>
+            <td align="center" class="currency">
+              <strong><%= totalPemasukan %></strong>
+            </td>
+            <td align="center" class="currency">
+              <strong><%= totalPengeluaran %></strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="action">
+        <button type="button" class="btn btn-primary" id="print">Print</button>
+    </div>
+    <script src="/js/laporan.js"></script>
+<%- include('./includes/footer.ejs') %>
